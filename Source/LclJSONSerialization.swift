@@ -128,7 +128,7 @@ public class LclJSONSerialization {
     private static func writeJsonValue(_ obj: Any, padding: String?, writer: (String?) -> Void) throws {
         if  obj is String  {
             writer("\"")
-            writer((obj as! String))
+            writer((obj as! String).replacingOccurrences(of: "\n", with: "\\n"))
             writer("\"")
         }
         else if  obj is Bool  {
